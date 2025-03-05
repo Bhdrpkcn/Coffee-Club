@@ -20,6 +20,7 @@ export const account = new Account(client);
 
 export async function login() {
   try {
+    WebBrowser.maybeCompleteAuthSession();
     const redirectUri = Linking.createURL("/");
 
     const response = await account.createOAuth2Token(
@@ -66,8 +67,14 @@ export async function logout() {
   }
 }
 
-export async function getUser() {
+export async function getCurrentUser() {
   try {
+    const session = await account.getSession("current");
+
+    if (!session) {
+      throw new Error("No active session");
+    }
+
     const response = await account.get();
 
     if (response.$id) {

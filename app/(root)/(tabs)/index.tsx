@@ -11,7 +11,7 @@ export default function Index() {
       }}
     >
       <Text className="font-bold text-3xl my-10 font-rubik">
-        Welcomes to Restate
+        Welcomes to Coffee Club !
       </Text>
       <Link href="/sign-in">Sign In</Link>
       <Link href="/explore">Explore</Link>
